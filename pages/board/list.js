@@ -183,4 +183,5 @@ const List = () => {
         </main>
     );
 };
+
 export default List;
