@@ -51,3 +51,5 @@ img { padding: 60px; margin: auto; display: flex; width: 50%; }
 
 select { padding: 3px; }
 input[type="text"] { padding: 3px; }
+
+.logo { padding: 50px 110px ; width: 75% }
