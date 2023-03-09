@@ -1,12 +1,13 @@
 
-List.getInitialProps = async function(ctx) {
+export async function getServerSideProps(ctx) {
     const res = await fetch('http://localhost:3000/api/board/list');
 
-    const board = await res.json();
-    return { board : board }
+    const boards = await res.json();
+
+    return { props : {boards} }
 }
 
-export default function List(props) {
+export default function List({boards}) {
 // const List = ({props}) => {
     return (
         <main>
@@ -33,7 +34,7 @@ export default function List(props) {
                     <th>조회</th>
                 </tr>
 
-                {props.board.map(bd => (
+                {boards.map(bd => (
                     <tr key={bd.bno}>
                         <td>{bd.bno}</td>
                         <td>{bd.title}</td>
