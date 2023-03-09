@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-   "next": "10.2.3",
-	"react": "16.14.0",
-	"react-dom": "16.14.0"
+    "mariadb": "^3.1.0",
+    "next": "10.2.3",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   },
-   "devDependencies": {
-	"eslint": "7.23.0",
-	"eslint-config-next": "10.2.3"
+  "devDependencies": {
+    "eslint": "7.23.0",
+    "eslint-config-next": "10.2.3"
   }
-
 }
