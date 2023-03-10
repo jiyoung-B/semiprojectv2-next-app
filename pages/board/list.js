@@ -1,14 +1,11 @@
-
 export async function getServerSideProps(ctx) {
     const res = await fetch('http://localhost:3000/api/board/list');
-
     const boards = await res.json();
 
     return { props : {boards} }
 }
 
-export default function List({boards}) {
-// const List = ({props}) => {
+export default function List( {boards} ) {
     return (
         <main>
             <h2>게시판</h2>
@@ -44,7 +41,6 @@ export default function List({boards}) {
                     </tr>
                 ))};
 
-
                 </tbody>
             </table>
 
@@ -63,7 +59,5 @@ export default function List({boards}) {
                 <li>다음</li>
             </ul>
         </main>
-    );
-};
-
-// export default List;
+    )
+}
