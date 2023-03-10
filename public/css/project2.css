@@ -21,6 +21,7 @@ button { padding: 5px 7px;}
 
 
 /* 새글쓰기, 본문보기 */
+#writefrm { width: 560px; }
 .dragup { vertical-align: top;}
 
 img { padding: 60px; margin: auto; display: flex; width: 50%; }
@@ -62,3 +63,4 @@ label { display: inline-block; width: 110px;
     display: inline-block;
     width: 560px; min-height: 350px;
     white-space: pre }
+
