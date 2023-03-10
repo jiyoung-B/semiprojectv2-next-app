@@ -1,6 +1,7 @@
 import {useState} from "react";
 import fetch from 'isomorphic-unfetch' // isomorphic으로 하면 uriencoder 필요없어
 import axios from 'axios'
+import Link from "next/link";
 
 const getStpgns = (cpg, alpg) => {
     let stpgns = [];
@@ -52,9 +53,13 @@ export async function getServerSideProps(ctx) {
     // 페이지네이션 처리 2(이전, 다음 버튼)
     let pgn = getPgns(cpg, alpg);
 
+    // 검색시 검색관련 질의문자열 생성
+    let qry = fkey ? `&ftype=${ftype}&fkey=${fkey}` : '';
+
     // 처리 결과를 boards 객체에 추가
     boards.stpgns = stpgns;
     boards.pgn = pgn;
+    boards.qry = qry;
 
     return { props : {boards} }
 }
@@ -106,7 +111,7 @@ export default function List( {boards} ) {
                 {boards.boards.map(bd => (
                     <tr key={bd.bno}>
                         <td>{bd.bno}</td>
-                        <td>{bd.title}</td>
+                        <td><Link href={`/board/view?bno=${bd.bno}`}>{bd.title}</Link></td>
                         <td>{bd.userid}</td>
                         <td>{bd.regdate}</td>
                         <td>{bd.views}</td>
@@ -117,11 +122,11 @@ export default function List( {boards} ) {
 
             <ul className="pagenation">
                 {boards.pgn.isprev ?
-                    <li> <a href={`?cpg=${boards.pgn.prev}`}>이전</a></li>
+                    <li> <a href={`?cpg=${boards.pgn.prev}${boards.qry}`}>이전</a></li>
                     : ''}
 
                 {boards.pgn.isprev ?
-                    <li> <a href={`?cpg=${boards.pgn.prev10}`}>이전10</a></li>
+                    <li> <a href={`?cpg=${boards.pgn.prev10}${boards.qry}`}>이전10</a></li>
                     : ''}
 
                 <li className="prev">이전</li>
@@ -133,11 +138,11 @@ export default function List( {boards} ) {
                 ))}
 
                 {boards.pgn.isnext10 ?
-                    <li> <a href={`?cpg=${boards.pgn.next10}`}>다음+10</a></li>
+                    <li> <a href={`?cpg=${boards.pgn.next10}${boards.qry}`}>다음+10</a></li>
                     : ''}
 
                 {boards.pgn.isnext ?
-                    <li> <a href={`?cpg=${boards.pgn.next}`}>다음</a></li>
+                    <li> <a href={`?cpg=${boards.pgn.next}${boards.qry}`}>다음</a></li>
                     : ''}
 
             </ul>
