@@ -4,7 +4,7 @@ import {useState} from "react"
 export default function Join() {
 
     const [userid, setUserid] = useState('');
-    const [passwd, setPasswd] = useState('');
+    const [passwd, setPasswd,] = useState('');
     const [repwd, setRepwd] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
