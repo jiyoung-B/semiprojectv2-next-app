@@ -64,3 +64,9 @@ label { display: inline-block; width: 110px;
     width: 560px; min-height: 350px;
     white-space: pre }
 
+/*recaptcha 이미지*/
+.cap {
+    display: inline-flex;
+    padding: 0;
+    margin: -15px 0 0 -10px;
+}
