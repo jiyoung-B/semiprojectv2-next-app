@@ -13,7 +13,16 @@ providers: [
         }, // 로그인 폼 정의
         async authorize(credentials, req) {
             // 아무거나 입력해도 그냥 로그인 됨
+            console.log('auth login - ', credentials);
+            // 입력한 인증 정보 가져옴
+            const email = credentials.email;
+            const passwd = credentials.passwd;
+
+            // 인증에 성공해야만 로그인 허용
+            if(email === '987xyz@abc123.co.kr' && passwd === '987xyz') {
+            console.log('auth login - ', credentials);
             return credentials;
+            }
 
         }
     })
