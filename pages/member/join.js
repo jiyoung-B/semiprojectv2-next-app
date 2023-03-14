@@ -9,6 +9,8 @@ export default function Join() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
+    console.log(process.env.SITE)
+
 
     const handlejoin = async () => {
         if (grecaptcha.getResponse() // 이미지캡챠 클릭하면

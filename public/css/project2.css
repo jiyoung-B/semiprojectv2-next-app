@@ -22,7 +22,7 @@ button { padding: 5px 7px;}
 
 /* 새글쓰기, 본문보기 */
 #writefrm { width: 560px; }
-.dragup { vertical-align: top;}
+.drgup { vertical-align: top;}
 
 img { padding: 60px; margin: auto; display: flex; width: 50%; }
 
@@ -55,11 +55,12 @@ input[type="text"] { padding: 3px; }
 
 .logo { padding: 50px 110px ; width: 75% }
 
+/*게시판 본문보기*/
 #view { width: 700px; margin: 0 auto; }
-label { display: inline-block; width: 110px;
+label label { display: inline-block; width: 110px;
     text-align: right; font-weight: bold;
     margin-right: 10px }
-#contents { border: 1px solid #eeeeee;
+#view #contents { border: 1px solid #eeeeee;
     display: inline-block;
     width: 560px; min-height: 350px;
     white-space: pre }
@@ -68,5 +69,6 @@ label { display: inline-block; width: 110px;
 .cap {
     display: inline-flex;
     padding: 0;
-    margin: -15px 0 0 -10px;
+    margin: -10px 0 0 -10px;
+    width: 200px;
 }
