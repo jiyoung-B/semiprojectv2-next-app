@@ -4,27 +4,48 @@ import Credentials from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 export default NextAuth({
 
-providers: [
-    Credentials({
-        name: "email-passwd-credentials",
-        credentials: {
-            email: { label: "이메일", type: "email" },
-            passwd: { label: "비밀번호", type: "password" }
-        }, // 로그인 폼 정의
-        async authorize(credentials, req) {
-            // 아무거나 입력해도 그냥 로그인 됨
-            console.log('auth login - ', credentials);
-            // 입력한 인증 정보 가져옴
-            const email = credentials.email;
-            const passwd = credentials.passwd;
+    providers: [
+        Credentials({
+            id: "userid-passwd-credentials",
+            name: "userid-passwd-credentials",
+            credentials: {
+                userid: { label: "아이디", type: "userid" },
+                passwd: { label: "비밀번호", type: "password" }
+            }, // 로그인 폼 정의
+            async authorize(credentials, req) {
+                // 아무거나 입력해도 그냥 로그인 됨
+                console.log('auth login - ', credentials);
+                // 입력한 인증 정보 가져옴
+                const userid = credentials.userid;
+                const passwd = credentials.passwd;
 
-            // 인증에 성공해야만 로그인 허용
-            if(email === '987xyz@abc123.co.kr' && passwd === '987xyz') {
-            console.log('auth login - ', credentials);
-            return credentials;
+                // 인증에 성공해야만 로그인 허용
+                if(userid === 'abc123' && passwd === '987xyz') {
+                    console.log('auth login - ', credentials);
+                    return credentials;
+                }
+
             }
+        })
+    ],
+    pages: { // 인증에 사용자 정의 로그인 페이지 사용
+        signIn: '/member/login'
 
-        }
-    })
-]
+    },
+    callbacks: { // 세션 변수 외에 다른 값들도 확인하고 싶다면 콜백함수를 쓴다..?
+    // token, user, account, profile, isNewUser
+    async jwt(token, user, account, profile, isNewUser) {
+        console.log('jwt - ', user);
+        if(user?.userid) token.userid = user.userid;// 옵셔널 체인! express 할때 했어? 삼항연산자와 비슷.
+        return token;
+
+        return token;
+    },
+    // session, userOrToken
+    async session(session, userOrToken) {
+        console.log('session - ', userOrToken);
+        session.user.userid = userOrToken.userid;
+        return session;
+    }
+    }
 });
