@@ -55,11 +55,9 @@ export default function Myinfo({member, session}){
             </table>
 
             {
-                session ? (
-                <button onClick={() => signOut()}>로그아웃하기</button>
-            ) : (
-                <a href="/api/auth/login">로그인하기</a>
-            )}
+                session ?
+                    <button onClick={() => signOut()}>로그아웃하기</button> : ''
+            }
 
 
         </main>

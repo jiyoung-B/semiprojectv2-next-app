@@ -72,3 +72,8 @@ label label { display: inline-block; width: 110px;
     margin: -10px 0 0 -10px;
     width: 200px;
 }
+
+/* 로그아웃 버튼 */
+.logdout{
+    position: absolute; top: 50%; left: 50%;
+}
