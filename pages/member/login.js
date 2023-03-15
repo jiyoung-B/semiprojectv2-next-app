@@ -7,7 +7,7 @@ export async function getServerSideProps(ctx) {
 
     // 세션 객체 가져오기
     const sess = await getSession(ctx);
-    if (!sess) { // 로그인한 경우 회원정보로 이동
+    if (sess) { // 로그인한 경우 회원정보로 이동
         return {
             redirect: {permanent: false, destination: '/member/myinfo'},
             props: {}
