@@ -3,7 +3,7 @@ import '../public/css/project2.css'
 import '../public/css/normalize.css'
 import '../public/css/main.css'
 import React from 'react';
-import {getSession} from "next-auth/client";
+// import {getSession} from "next-auth/client";
 
 
 function App({ Component, pageProps, menu }) {

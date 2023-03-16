@@ -2,6 +2,8 @@ import {useState} from "react";
 import fetch from 'isomorphic-unfetch' // isomorphic으로 하면 uriencoder 필요없어
 import axios from 'axios'
 import Link from "next/link";
+import Layout from "../../components/layout/Layout";
+import View from "./view";
 
 const getStpgns = (cpg, alpg) => {
     let stpgns = [];
@@ -100,7 +102,7 @@ export default function List( {boards} ) {
                         <input type="text" name="fkey" id="fkey" onChange={handlekey}/>
                         <button type="button" id="findbtn" onClick={handlefind}>검색하기</button>
                     </td>
-                    <td colSpan="2" class="alignrgt">
+                    <td colSpan="2" className="alignrgt">
                     <button type="button" id="newbtn" onClick={handlewrite}>새글쓰기</button></td>
                 </tr>
                 <tr>
@@ -152,3 +154,9 @@ export default function List( {boards} ) {
         </main>
     )
 }
+
+List.getLayout = (page) => (
+    <Layout meta={{title: '게시판 목록'}}>
+        {page}
+    </Layout>
+)

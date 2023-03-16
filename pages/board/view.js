@@ -1,9 +1,11 @@
 import axios from "axios";
+import Layout from "../../components/layout/Layout";
+import Login from "../member/login";
 
 export async function getServerSideProps(ctx) {
     let bno = ctx.query.bno;
     let url = `http://localhost:3000/api/board/view?bno=${bno}`;
-    const res = await axios.get(url);  // axiox
+    const res = await axios.get(url);  // axios
     const board = await res.data[0];
     console.log(board);
 
@@ -33,7 +35,7 @@ export default function View( {board} ) {
                     <div><label>작성일</label>
                         <span> {board.regdate}({board.views})</span></div>
 
-                    <div><label className="dragup">본 문</label>
+                    <div><label className="drgup">본 문</label>
                         <span id="contents">{board.contents}</span></div>
 
                     <input type="hidden" id="bno" value={board.bno} />
@@ -53,3 +55,9 @@ export default function View( {board} ) {
 
     )
 }
+
+View.getLayout = (page) => (
+    <Layout meta={{title: '게시판 본문보기'}}>
+        {page}
+    </Layout>
+)

@@ -1,6 +1,6 @@
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
-import Image from "next/image";
+// import img from "next/image";
 import Layout from "../components/layout/Layout";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
 }
 
 Home.getLayout = (page) => (
-    <Layout meta={{title: 'index'}}>
+    <Layout meta={{title: 'NextJs 프로젝트'}}>
         {page}
     </Layout>
 )

@@ -1,7 +1,9 @@
 import axios from "axios";
-import {handleInput} from "../../models/Utils";
+import {handleInput} from "../../components/Utils";
 import {useState} from "react";
 import {getSession, signIn, useSession} from "next-auth/client";
+import Layout from "../../components/layout/Layout";
+
 
 export async function getServerSideProps(ctx) {
 
@@ -71,3 +73,9 @@ export default function Login() {
 
     );
 };
+
+Login.getLayout = (page) => (
+    <Layout meta={{title: '로그인'}}>
+        {page}
+    </Layout>
+)
