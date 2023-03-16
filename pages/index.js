@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import Layout from "../components/layout/Layout";
 
 export default function Home() {
   return (
@@ -9,3 +10,9 @@ export default function Home() {
       </main>
   );
 }
+
+Home.getLayout = (page) => (
+    <Layout meta={{title: 'index'}}>
+        {page}
+    </Layout>
+)
