@@ -2,7 +2,6 @@ import axios from "axios";
 import {check_captcha, handleInput, process_submit } from "../../components/Utils";
 import {useState} from "react";
 import Layout from "../../components/layout/Layout";
-import Login from "../member/login";
 
 
 export default function Write() {
