@@ -1,31 +1,28 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import Head from "next/head";
 
 // localhost:3000/member/join
 
-const Layout = ({children, menu}) => {
-    console.log('layout -', menu);
+const Layout = ({children, meta}) => {
+   // console.log('layout -', children.props.menu);
+
+    const {title, description, icon} = meta;
     return (
-            <html lang="ko">
-            <head>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="stylesheet" href="/css/normalize.css" />
-                <link rel="stylesheet" href="/css/main.css" />
-                <link rel="stylesheet" href="/css/project2.css" />
-                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-                <title>index</title>
-
-            </head>
-            <body>
-            <div id="wrapper">
-            <Header menu={menu}/>{children}
+        <>
+        <Head>
+            <link rel="stylesheet" href="/css/normalize.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/project2.css" />
+            <title>{title}</title>
+            <link rel="icon" href={icon || '/favicon.ico'} />
+        </Head>
+        <div id="wrapper">
+            <Header menu={children.props.menu}/>
+                {children}
             <Footer />
-
-            </div>
-            </body>
-            </html>
+        </div>
+        </>
     )
 };
 export default Layout;

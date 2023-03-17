@@ -56,7 +56,7 @@ export default function Update( {board} ) {
                                   rows="7" cols="55" value={contents} /></div>
 
                     <div><label></label>
-                        <div className="g-recaptcha cap" data-sitekey="6LdJ4OskAAAAADNIADK7jJrjeVgeG9Y9mP3bx_V_"></div>
+                        <div className="g-recaptcha cap" data-sitekey={process.env.SITE_KEY}></div>
                     </div>
 
                     <div><label></label>
